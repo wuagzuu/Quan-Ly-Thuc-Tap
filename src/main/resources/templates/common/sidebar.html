@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar" th:fragment="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" th:href="@{/}">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_TEACHER')">
+            <a class="nav-link collapsed" th:href="@{/sinhvien}">
+                <i class="bi bi-person"></i>
+                <span>Sinh viên</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+            <a class="nav-link collapsed" th:href="@{/giaovien}">
+                <i class="bi bi-question-circle"></i>
+                <span>Giáo viên</span>
+            </a>
+        </li>
+
+        <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+            <a class="nav-link collapsed" th:href="@{/chuyennganh}">
+                <i class="bi bi-envelope"></i>
+                <span>Chuyên ngành</span>
+            </a>
+        </li><!-- End Contact Page Nav -->
+
+        <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+            <a class="nav-link collapsed" href="">
+                <i class="bi bi-card-list"></i>
+                <span>Doanh nghiệp</span>
+            </a>
+        </li><!-- End Register Page Nav -->
+
+
+    </ul>
+
+</aside><!-- End Sidebar-->

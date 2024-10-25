@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<div th:replace="~{common/head :: head}"></div>
+
+<body>
+
+<div th:replace="~{common/header :: header}"></div>
+
+<div th:replace="~{common/sidebar :: sidebar}"></div>
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Data Tables</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Tables</li>
+                <li class="breadcrumb-item active">Data</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>Description</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="major : ${majors}">
+                                <td th:text="${major.name}"></td>
+                                <td th:text="${major.description}"></td>
+                                <td class="d-flex gap-3 justify-content-center">
+                                    <a th:href="@{/chuyenganh/edit/{id}(id=${major.id})}"><i class="bi bi-pen text-info"></i></a>
+                                    <a th:href="@{/chuyenganh/delete/{id}(id=${major.id})}" onclick="return confirmDelete();"><i class="bi bi-trash text-danger"></i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+
+<div th:replace="~{common/footer :: footer}"></div>
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<div th:replace="~{common/script :: script}"></div>
+
+</body>
+
+</html>
